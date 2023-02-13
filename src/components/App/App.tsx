@@ -1,8 +1,13 @@
 import React from 'react';
+import CustomerLayer from '../CustomerLayer/CustomerLayer';
 import './App.scss';
 
-function App() {
-  return <div className='App'></div>;
-}
+const App = () => {
+  return (
+    <div className='App'>
+      <CustomerLayer />
+    </div>
+  );
+};
 
 export default App;
