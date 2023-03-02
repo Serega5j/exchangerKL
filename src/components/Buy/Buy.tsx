@@ -1,16 +1,13 @@
-import { useContext } from 'react';
 import { useState } from 'react';
-import { Context } from '../../index';
 import {
   basic_courses_collections,
   basic_courses_buildings,
   basic_courses_materials
 } from '../../helper/constants';
 
-const Sell = () => {
-  const store = useContext(Context);
+const Buy = () => {
   const [sell, setSell] = useState({
-    group: 'collectionsSell',
+    group: 'collectionsBuy',
     value: ''
   });
   const [livingSearch, setLivingSearch] = useState(false);
@@ -53,7 +50,7 @@ const Sell = () => {
   return (
     <>
       <div className='fromCustomer'>
-        <h4>Выбор ценного элемента для продажи</h4>
+        <h4>Выбор ценного элемента для покупки</h4>
         <input
           title='Поиск по всем категориям'
           type='text'
@@ -70,7 +67,6 @@ const Sell = () => {
               key={`продукт ${i}`}
               onClick={(e) => {
                 setSell({ ...sell, value: e.currentTarget.textContent as string });
-                store.setSameProperty(e.currentTarget.textContent as string);
                 setVariants([]);
               }}
             >
@@ -81,38 +77,38 @@ const Sell = () => {
         {!livingSearch && (
           <>
             <div className='container_wrap'>
-              <p>Предлагаю</p>
+              <p>Получаю</p>
               <input
                 type='radio'
-                id='collectionsSell'
-                name='chooseGroupSell'
+                id='collectionsBuy'
+                name='chooseGroupBuy'
                 defaultChecked
                 onChange={(e) => {
                   setSell({ ...sell, group: e.target.id });
                 }}
               />
-              <label htmlFor='collectionsSell'>коллекции</label>
+              <label htmlFor='collectionsBuy'>коллекции</label>
               <input
                 type='radio'
-                id='buildingsSell'
-                name='chooseGroupSell'
+                id='buildingsBuy'
+                name='chooseGroupBuy'
                 onChange={(e) => {
                   setSell({ ...sell, group: e.target.id });
                 }}
               />
-              <label htmlFor='buildingsSell'>Здания</label>
+              <label htmlFor='buildingsBuy'>Здания</label>
               <input
                 type='radio'
-                id='materialsSell'
-                name='chooseGroupSell'
+                id='materialsBuy'
+                name='chooseGroupBuy'
                 onChange={(e) => {
                   setSell({ ...sell, group: e.target.id });
                 }}
               />
-              <label htmlFor='materialsSell'>Материалы</label>
+              <label htmlFor='materialsBuy'>Материалы</label>
             </div>
             <select>
-              {sell.group === 'collectionsSell' && (
+              {sell.group === 'collectionsBuy' && (
                 <>
                   <option value=''>Коллекции</option>
                   {Object.keys(basic_courses_collections)?.map((element, i) => (
@@ -122,7 +118,7 @@ const Sell = () => {
                   ))}
                 </>
               )}
-              {sell.group === 'buildingsSell' && (
+              {sell.group === 'buildingsBuy' && (
                 <>
                   <option value=''>Здания</option>
                   {Object.keys(basic_courses_buildings)?.map((element, i) => (
@@ -132,7 +128,7 @@ const Sell = () => {
                   ))}
                 </>
               )}
-              {sell.group === 'materialsSell' && (
+              {sell.group === 'materialsBuy' && (
                 <>
                   <option value=''>Материалы</option>
                   {Object.keys(basic_courses_materials)?.map((element, i) => (
@@ -149,4 +145,4 @@ const Sell = () => {
     </>
   );
 };
-export default Sell;
+export default Buy;

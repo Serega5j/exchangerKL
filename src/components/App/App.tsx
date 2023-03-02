@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomerLayer from '../CustomerLayer/CustomerLayer';
 import './App.scss';
 
